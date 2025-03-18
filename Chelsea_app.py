@@ -2,16 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-# Charger les données CSV
-gps_data = pd.read_csv('CFC GPS Data.csv', encoding='latin-1')
-physical_capability_data = pd.read_csv("CFC Physical Capability Data_.csv")
-recovery_status_data = pd.read_csv("CFC Recovery status Data.csv")
-priority_areas_data = pd.read_csv("CFC Individual Priority Areas.csv")
-
-# Conversion de la colonne 'date' en datetime
-gps_data['date'] = pd.to_datetime(gps_data['date'])
-physical_capability_data['date'] = pd.to_datetime(physical_capability_data['date'])
-recovery_status_data['date'] = pd.to_datetime(recovery_status_data['date'])
+# Charger les données CSV et Lecture avec le format de date correct
+gps_data = pd.read_csv('CFC GPS Data.csv', encoding='ISO-8859-1')
+physical_capability_data = pd.read_csv("CFC Physical Capability Data_.csv", encoding='ISO-8859-1', parse_dates=['date'], dayfirst=True)
+recovery_status_data = pd.read_csv("CFC Recovery status Data.csv", encoding='ISO-8859-1', parse_dates=['date'], dayfirst=True)
+priority_areas_data = pd.read_csv("CFC Individual Priority Areas.csv", encoding='ISO-8859-1', parse_dates=['date'], dayfirst=True)
 
 # Titre de l'application
 st.title("Suivi de la Performance Physique et Récupération du Joueur")
