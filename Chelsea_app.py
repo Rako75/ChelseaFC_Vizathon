@@ -5,7 +5,7 @@ import streamlit as st
 # Charger les données
 gps_data = pd.read_csv("CFC GPS Data.csv", encoding='ISO-8859-1')
 physical_capability_data = pd.read_csv("CFC Physical Capability Data_.csv")
-recovery_status_data = pd.read_csv("CFC Recovery status Data.csv", encoding='ISO-8859-1)
+recovery_status_data = pd.read_csv("CFC Recovery status Data.csv", encoding='ISO-8859-1')
 
 # Convertir les colonnes de date en datetime, en précisant le format
 gps_data['date'] = pd.to_datetime(gps_data['date'], format='%d/%m/%Y')
