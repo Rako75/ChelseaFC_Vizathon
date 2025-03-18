@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 # Charger les données CSV
-gps_data = pd.read_csv("CFC GPS Data.csv")
+gps_data = pd.read_csv('CFC GPS Data.csv', encoding='latin-1')
 physical_capability_data = pd.read_csv("CFC Physical Capability Data_.csv")
 recovery_status_data = pd.read_csv("CFC Recovery status Data.csv")
 priority_areas_data = pd.read_csv("CFC Individual Priority Areas.csv")
