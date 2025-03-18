@@ -47,15 +47,15 @@ elif app_mode == "Physical Capability":
     st.header("Suivi de la Capacité Physique du Joueur")
 
     # Sélectionner les colonnes pertinentes pour la visualisation
-    sprint_data = physical_capability_data[physical_capability_data['MOVEMENT'] == 'Sprint']
-    sprint_max_velocity = sprint_data[['date', 'QUALITY', 'EXPRESSION', 'BenchmarkPct']]
+    sprint_data = physical_capability_data[physical_capability_data['movement'] == 'sprint']
+    sprint_max_velocity = sprint_data[['testDate', 'quality', 'expression', 'benchmarkPct']]
 
     # Visualiser les données de performance
     st.subheader("Performance Sprint du Joueur")
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(sprint_max_velocity['date'], sprint_max_velocity['BenchmarkPct'], label="Sprint Max Velocity")
+    ax.plot(sprint_max_velocity['date'], sprint_max_velocity['benchmarkPct'], label="Sprint Max Velocity")
     ax.set_title("Performance Sprint du joueur")
-    ax.set_xlabel("Date")
+    ax.set_xlabel("Test date")
     ax.set_ylabel("Benchmark %")
     ax.legend()
     plt.xticks(rotation=45)
@@ -68,13 +68,16 @@ elif app_mode == "Recovery Status":
     st.header("Suivi de la Récupération du Joueur")
 
     # Visualiser les données de sommeil
-    sleep_data = recovery_status_data[['date', 'Sleep_composite']]
+    sleep_data = recovery_status_data[['sessionDate', 'sleep_baseline_composite']]
+
+    # Retirer les lignes où la date ou les scores de sommeil sont manquants
+    sleep_data.dropna(subset=['sessionDate', 'sleep_baseline_composite'], inplace=True)
 
     st.subheader("Qualité du Sommeil du Joueur")
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(sleep_data['date'], sleep_data['Sleep_composite'], label="Score Composite du Sommeil")
+    ax.plot(sleep_data['sessionDate'], sleep_data['sleep_baseline_composite'], label="Score Composite du Sommeil", color='blue')
     ax.set_title("Qualité du Sommeil du joueur")
-    ax.set_xlabel("Date")
+    ax.set_xlabel("sessionDate")
     ax.set_ylabel("Score Composite")
     ax.legend()
     plt.xticks(rotation=45)
