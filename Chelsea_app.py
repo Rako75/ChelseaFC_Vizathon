@@ -53,7 +53,7 @@ elif app_mode == "Physical Capability":
     # Visualiser les données de performance
     st.subheader("Performance Sprint du Joueur")
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(sprint_max_velocity['date'], sprint_max_velocity['benchmarkPct'], label="Sprint Max Velocity")
+    ax.plot(sprint_max_velocity['testDate'], sprint_max_velocity['benchmarkPct'], label="Sprint Max Velocity")
     ax.set_title("Performance Sprint du joueur")
     ax.set_xlabel("Test date")
     ax.set_ylabel("Benchmark %")
