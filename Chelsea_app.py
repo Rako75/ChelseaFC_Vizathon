@@ -6,13 +6,12 @@ import streamlit as st
 gps_data = pd.read_csv("CFC GPS Data.csv", encoding='ISO-8859-1')
 physical_capability_data = pd.read_csv("CFC Physical Capability Data_.csv", encoding='ISO-8859-1')
 recovery_status_data = pd.read_csv("CFC Recovery status Data.csv", encoding='ISO-8859-1')
-priority_areas_data = pd.read_csv("CFC Individual Priority Areas.csv", encoding='ISO-8859-1')
 
 # Convertir les colonnes de date en datetime, en précisant le format
 gps_data['date'] = pd.to_datetime(gps_data['date'], format='%d/%m/%Y')
-physical_capability_data['date'] = pd.to_datetime(physical_capability_data['date'], format='%d/%m/%Y')
-recovery_status_data['date'] = pd.to_datetime(recovery_status_data['date'], format='%d/%m/%Y')
-priority_areas_data['date'] = pd.to_datetime(priority_areas_data['date'], format='%d/%m/%Y')
+physical_capability_data['testDate'] = pd.to_datetime(physical_capability_data['testDate'], format='%d/%m/%Y')
+recovery_status_data['sessionDate'] = pd.to_datetime(recovery_status_data['sessionDate'], format='%d/%m/%Y')
+priority_areas_data = pd.read_csv("CFC Individual Priority Areas.csv", encoding='ISO-8859-1', parse_dates=['Target set', 'Review Date'], dayfirst=True)
 
 
 
