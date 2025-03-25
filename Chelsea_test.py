@@ -5,7 +5,7 @@ import plotly.express as px
 # Charger les fichiers CSV
 @st.cache_data
 def load_data():
-    gps_data = pd.read_csv("CFC GPS Data.csv")
+    gps_data = pd.read_csv("CFC GPS Data.csv", encoding='ISO-8859-1')
     physical_data = pd.read_csv("CFC Physical Capability Data_.csv")
     return gps_data, physical_data
 
